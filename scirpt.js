@@ -7,15 +7,18 @@ let model, webcam, labelContainer, maxPredictions;
 let videoPlaying = false;
 var maxid = 0;
 
+// Display the error
 function errorDisplay(err) {
   label.style = "color:red";
   label.innerText = err;
 }
 
+// Check if camera is supported
 function hasGetUserMedia() {
   return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
 }
 
+// Camera Controls
 function control() {
   if (videoPlaying) {
     videoPlaying = false;
@@ -31,14 +34,21 @@ function control() {
 }
 
 async function load() {
+  var isOk = true;
   await fetch("config.yml")
-    .then((response) => response.text())
+    .then(function (response) {
+      if (!response.ok) {
+        isOk = false;
+      }
+
+      return response.text();
+    })
     .then((yamlData) => {
       // Parse YAML data
-      console.log(yamlData);
+      // console.log(yamlData);
       var parsedData = jsyaml.load(yamlData);
       TMURL =
-        String(parsedData.TEACHABLE_MACHINE_URL) ??
+        String(parsedData.TEACHABLE_MACHINE_URL) ||
         window.location.origin + "/libraries/";
       facingMode =
         String(parsedData.CAMERA_FACING).toLowerCase() == "front"
@@ -47,7 +57,29 @@ async function load() {
 
       if (!TMURL.endsWith("/")) TMURL += "/";
     })
-    .catch((error) => errorDisplay(error));
+    .catch((error) => {
+      errorDisplay("Cannot file the config.yml file");
+      isOk = false;
+
+      return;
+    });
+
+  await fetch(TMURL + "model.json")
+    .then(function () {
+      if (!response.ok) {
+        isOk = false;
+      }
+      return;
+    })
+    .catch((error) => {
+      errorDisplay("Cannot file AI model files (URL NOT Found)");
+      console.log("error");
+      isOk = false;
+      return;
+    });
+  if (!isOk) {
+    return;
+  }
 
   if (hasGetUserMedia()) {
     // getUsermedia parameters.
@@ -74,10 +106,10 @@ async function load() {
 
 load();
 
-// Load the image model and setup the webcam
+// Load the image model
 async function init() {
-  const modelURL = TMUrl + "model.json";
-  const metadataURL = TMUrl + "metadata.json";
+  const modelURL = TMURL + "model.json";
+  const metadataURL = TMURL + "metadata.json";
 
   model = await tmImage.load(modelURL, metadataURL);
   maxPredictions = model.getTotalClasses();
@@ -101,20 +133,17 @@ function getMaxProbName(data) {
       maxItemid = data.indexOf(item);
     }
   }
-  // console.log(maxItemid);
   if (maxProb < 0.75) return "...";
 
   maxid = maxItemid;
   return maxProbname;
 }
 
-// run the webcam image through the image model
 async function predict() {
-  // predict can take in an image, video or canvas html element
   const prediction = await model.predict(VIDEO);
-  if (maxid == 0) label.style = "color:#00cf0a";
-  else if (maxid == 1) label.style = "color:#cf0000";
-  else if (maxid == 2) label.style = "color:#ebe00e";
-  else label.style = "color:#fff";
+  // if (maxid == 0) label.style = "color:#00cf0a";
+  // else if (maxid == 1) label.style = "color:#cf0000";
+  // else if (maxid == 2) label.style = "color:#ebe00e";
+  // else label.style = "color:#fff";
   label.innerText = getMaxProbName(prediction);
 }

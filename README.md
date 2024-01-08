@@ -2,6 +2,8 @@
 
 A simple client app with local server hosting for AI made with <a href="https://teachablemachine.withgoogle.com/" style="color:lightblue">Teachable Machine</a>. Using this repo you can start a local server in your desktop and access across devices in your same network.
 
+<img src="./assets/cover.png" width="100%" />
+
 - Features
   - Camera (both front and rear)
   - Camera controls (play and pause)
@@ -138,7 +140,7 @@ Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
 ## Step 3
 
 > [!TIP]
-> If you want to start a secure server consider using Ngrok
+> If you want to start a secure server and access your server from any device consider using Ngrok
 > We have provided the steps to setup [ngrok](#ngrok-setup) with our project in [FAQ](#faq)
 
 Start server and host the app on the local machine
@@ -164,7 +166,7 @@ Now our app is perfectly working! 🥳🎉
 <img src="./assets/result.png" width="100%" />
 
 > [!TIP]
-> You can set custom theme colors by changing theme.css (We have also provided a detailed walkthrough in [FAQ](#custom-themes-setup))
+> You can set custom theme colors by changing [theme.css](./theme.css) (We have also provided a detailed walkthrough in [FAQ](#custom-themes-setup))
 
 > [!TIP]
 > You can change the facing mode of camera in [config.yml](./config.yml) (We have also provided a detailed walkthrough in [FAQ](#camera-view-change))
