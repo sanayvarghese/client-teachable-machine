@@ -36,20 +36,36 @@ Upload or Download your Model
 
 ## Step 1
 
-- Manually Download the zip
-  - Download the zip and extract the zip
-- Using Git
+<details open>
+<summary>
+Manually Download the zip
+</summary>
 
-  - Open cmd.exe (from start menu or Press <kbd>Win + R</kbd> and type cmd.exe and Press Ok)
-    Clone the repository and navigate to the folder
+- Download the zip and Extract the files
+  <img src="./assets/github.png" width="100%" />
+- Open the folder and click on the address bar and type cmd.exe
+<img src="./assets/explorer.png" width="100%" />
+This will open cmd on the project folder
+</details>
 
-    ```
-    git clone https://github.com/sanayvarghese/client-teachable-machine.git
-    ```
+<details>
+<summary>
+Using Git
+</summary>
 
-    ```
-    cd client-teachable-machine
-    ```
+- Open cmd.exe (from start menu or Press <kbd>Win + R</kbd> and type cmd.exe and Press Ok)
+
+  Clone the repository and navigate to the folder
+
+  ```
+  git clone https://github.com/sanayvarghese/client-teachable-machine.git
+  ```
+
+  ```
+  cd client-teachable-machine
+  ```
+
+</details>
 
 ## Step 2
 
