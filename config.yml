@@ -1,0 +1,6 @@
+NGROK_AUTH_TOKEN: 2HaR4n5oF4h6cNIqMQAUnhkwm3t_2FrUErvyssZD9i5Cwkv6E
+TEACHABLE_MACHINE_URL: ./libraries/
+
+# FACING MODE OF CAMERA
+# Eg: front and back
+CAMERA_FACING: "front"
