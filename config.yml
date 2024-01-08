@@ -3,4 +3,4 @@ TEACHABLE_MACHINE_URL: ./libraries/
 
 # FACING MODE OF CAMERA
 # Eg: front and back
-CAMERA_FACING: "front"
+CAMERA_FACING: "back"
