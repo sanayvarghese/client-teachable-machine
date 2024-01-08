@@ -2,10 +2,19 @@
 
 A simple client app with local server hosting for AI made with <a href="https://teachablemachine.withgoogle.com/" style="color:lightblue">Teachable Machine</a>. Using this repo you can start a local server in your desktop and access across devices in your same network.
 
+- Features
+  - Camera (both front and rear)
+  - Camera controls (play and pause)
+  - Custom Theme
+  - Ngrok Supported
+
 Follow the steps below to setup a frontend for your AI model trained with Teachable machine.
+
+---
 
 <details>
 <summary>How to build a AI model with <a href="https://teachablemachine.withgoogle.com/" style="color:lightblue">Teachable Machine</a></summary>
+<br/>
 
 #### Step 1
 
@@ -33,6 +42,8 @@ Click on Export Model
 Upload or Download your Model
 
 </details>
+
+---
 
 ## Step 1
 
@@ -69,9 +80,9 @@ Using Git
 
 ## Step 2
 
-Now open the browser and get your Teachable machine trained AI model link or download the model and edit the <a href="config.yml">`config.yml`</a> file
+Now open the browser and get your Teachable machine trained AI model link or download the model and edit the [`config.yml`](./config.yml) file
 
-<details>
+<details open>
   <summary>Using Teachable machine model link</summary>
   <br/>
 
@@ -86,7 +97,7 @@ Now open the browser and get your Teachable machine trained AI model link or dow
   <br/>
 
 - #### Paste the link in config.yml file for the field `TEACHABLE_MACHINE_URL`
-  Eg: <a href="config.yml">`config.yml`</a>
+  Eg: [`config.yml`](./config.yml)
 
 ```yaml
 TEACHABLE_MACHINE_URL: https://teachablemachine.withgoogle.com/models/XXXXXX/
@@ -99,7 +110,7 @@ Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
 
 <details>
 
-<summary> Using downloaded model</summary>
+<summary>Using downloaded model</summary>
 
 - #### First download the model
 
@@ -116,7 +127,7 @@ Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
     <br/>
 - #### Edit the config.yml file's `TEACHABLE_MACHINE_URL` field
 
-  Now <a href="config.yml">`config.yml`</a> will be like
+  Now [`config.yml`](./config.yml) will be like
 
   ```yaml
   TEACHABLE_MACHINE_URL: ./libraries/
@@ -125,6 +136,10 @@ Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
 </details>
 
 ## Step 3
+
+> [!TIP]
+> If you want to start a secure server consider using Ngrok
+> We have provided the steps to setup [ngrok](#ngrok-setup) with our project in [FAQ](#faq)
 
 Start server and host the app on the local machine
 
@@ -148,16 +163,22 @@ Accept the camera permission to enable camera.
 Now our app is perfectly working! 🥳🎉
 <img src="./assets/result.png" width="100%" />
 
+> [!TIP]
+> You can set custom theme colors by changing theme.css (We have also provided a detailed walkthrough in [FAQ](#custom-themes-setup))
+
+> [!TIP]
+> You can change the facing mode of camera in [config.yml](./config.yml) (We have also provided a detailed walkthrough in [FAQ](#camera-view-change))
+
 # FAQ
 
-<details>
-<summary>
+<details id="camera-view-change">
+<summary >
 Q1. How to change the camera view?
 </summary>
 
 <h5>Step 1</h5>
 
-Open the <a href="config.yml" style="color:lightblue">`config.yml`</a> file and edit `CAMERA_FACING` to your desired mode
+Open the [`config.yml`](./config.yml) file and edit `CAMERA_FACING` to your desired mode
 
 ```yml
 CAMERA_FACING: "front"
@@ -173,7 +194,7 @@ And Restart your server
 
 </details>
 
-<details >
+<details id="ngrok-setup">
 <summary>
 Q2. How to integrate Ngrok with our app?
 </summary>
@@ -184,7 +205,7 @@ Go to <a href="https://dashboard.ngrok.com/" style="color:lightblue">ngrok dashb
 
 <h5>Step 2</h5>
 
-Edit the `config.yml`
+Edit the [`config.yml`](./config.yml)
 
 ```yml
 NGROK_AUTH_TOKEN: <your ngrok_auth_token>
@@ -211,10 +232,10 @@ Start the server
 
 </details>
 
-<details>
+<details id="custom-themes-setup">
 <summary>Q3. How to set custom themes?</summary>
 
-Open <a href="theme.css" style="color:lightblue">`theme.css`</a> file edit the colors from there
+Open [`theme.css`](./theme.css) file edit the colors from there
 
 ```css
 :root {
@@ -226,6 +247,8 @@ Open <a href="theme.css" style="color:lightblue">`theme.css`</a> file edit the c
 }
 ```
 
+Restart the server to apply the changes
+
 </details>
 
-##### If you face any other issue or errors, feel free to open a issue :)
+##### If you have any other questions or face any other issue, feel free to open a issue :)
