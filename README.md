@@ -5,6 +5,7 @@ A simple client app with local server hosting for AI made with <a href="https://
 <img src="./assets/cover.png" width="100%" />
 
 - Features
+  - Image upload
   - Camera (both front and rear)
   - Camera controls (play and pause)
   - Custom Theme
