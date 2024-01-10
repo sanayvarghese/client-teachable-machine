@@ -96,8 +96,8 @@ def run_servers():
             logging.info("")
             
             # Specify the paths to the self-signed certificate and private key
-            certfile = "server.crt"
-            keyfile = "server.key"
+            certfile = "cert/server.crt"
+            keyfile = "cert/server.key"
 
             context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
             context.load_cert_chain(certfile=certfile, keyfile=keyfile)

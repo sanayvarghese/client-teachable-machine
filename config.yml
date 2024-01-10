@@ -1,5 +1,5 @@
-NGROK_AUTH_TOKEN: 2HaR4n5oF4h6cNIqMQAUnhkwm3t_2FrUErvyssZD9i5Cwkv6E
-TEACHABLE_MACHINE_URL: https://teachablemachine.withgoogle.com/models/A28n83xPs/
+# NGROK_AUTH_TOKEN: 2HaR4n5oF4h6cNIqMQAUnhkwm3t_XXXXXXXXXX
+TEACHABLE_MACHINE_URL: ./libraries/
 
 # FACING MODE OF CAMERA
 # Eg: front and back
