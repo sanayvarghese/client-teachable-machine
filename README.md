@@ -154,7 +154,7 @@ python server.py
 
 <img src="./assets/cmd.png" width="100%" />
 
-Our app will be now hosted on `https://<your ip>:8080`
+Our app will be now hosted on `https://<your ip>:8000`
 Now visit this url using a browser on same device or another device on same network.
 
 Now this warning page will appear.
