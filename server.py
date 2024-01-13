@@ -111,7 +111,9 @@ def run_servers():
         logging.info("")
         
         print(f"{COLOR_YELLOW}After Loading the website if there is a blue button called  {COLOR_CYAN}Visit Site{COLOR_YELLOW}, Click On that!!{COLOR_RESET}")
+        print(f"{COLOR_RED}Press Ctrl + C to exit...{COLOR_RESET}")
         server.serve_forever()
+
         
 
     
