@@ -134,11 +134,10 @@ Now open the browser and get your Teachable machine trained AI model link or dow
   TEACHABLE_MACHINE_URL: https://teachablemachine.withgoogle.com/models/XXXXXX/
   ```
 
-> [!CAUTION]
-> Make sure you leave a space between colon( : ).
+  > Make sure you leave a space between colon( : )
 
-Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
-<br/>
+  Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
+  <br/>
 
 </details>
 
@@ -167,8 +166,7 @@ Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
   TEACHABLE_MACHINE_URL: ./libraries/
   ```
 
-> [!CAUTION]
-> Make sure you leave a space between colon( : ).
+  > Make sure you leave a space between colon( : )
 
 </details>
 
