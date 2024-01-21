@@ -167,8 +167,8 @@ Now open the browser and get your Teachable machine trained AI model link or dow
   TEACHABLE_MACHINE_URL: ./libraries/
   ```
 
-  > [!WARNING]
-  > Make sure you leave a space between colon( : )
+> [!WARNING]
+> Make sure you leave a space between colon( : )
 
 </details>
 
