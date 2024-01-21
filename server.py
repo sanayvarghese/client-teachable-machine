@@ -4,16 +4,16 @@ import ssl
 import ngrok
 import threading
 import yaml
-import signal
-import sys
 import socket
-
 # ANSI escape codes for colors
 COLOR_RESET = "\033[0m"
 COLOR_RED = "\033[91m"
 COLOR_GREEN = "\033[92m"
 COLOR_YELLOW = "\033[93m"
 COLOR_CYAN = "\033[96m"
+
+
+
 # Custom log level colors
 LOG_LEVEL_COLORS = {
     'DEBUG': COLOR_CYAN,
@@ -35,7 +35,9 @@ def setup_colorized_logging():
     logger = logging.getLogger()
     logger.addHandler(handler)
     logger.setLevel(logging.INFO)
+
 def get_private_ipv4():
+    print(f"{COLOR_CYAN}Getting Private IP...{COLOR_RESET}")
     try:
         # Create a socket and connect to an external server (here, using Google's public DNS server)
         # This is done to get the local IP address used for the connection
@@ -47,6 +49,7 @@ def get_private_ipv4():
     except socket.error as e:
         logging.warning("When accessing from other device on same network remember to change localhost to your machine ip address")
         return "localhost"
+
 ngrok_url = ""
 
 class Guider(BaseHTTPRequestHandler):
@@ -56,7 +59,7 @@ class Guider(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b"")
 
-class MyHandler(SimpleHTTPRequestHandler):
+class ClientPage(SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
         super().end_headers()
@@ -74,11 +77,12 @@ def run_servers():
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
     ngrok_auth_token = get_ngrok_auth_token()
-    print(f"{COLOR_CYAN}Starting....{COLOR_RESET}")
+    ip = get_private_ipv4()
+    print(f"{COLOR_CYAN}Starting Server....{COLOR_RESET}")
     logging.info("")
 
     try:
-        server = HTTPServer(("0.0.0.0", 8000), MyHandler)
+        server = HTTPServer(("0.0.0.0", 8000), ClientPage)
         if ngrok_auth_token:
             listener = ngrok.forward("localhost:8000", authtoken=ngrok_auth_token)
             ngrok_url = listener.url()
@@ -88,8 +92,11 @@ def run_servers():
             guider_server_thread = threading.Thread(target=guider_server.serve_forever)
             guider_server_thread.start()
 
-            print(f"Visit the app at ---> {COLOR_GREEN}http://{get_private_ipv4()}:{guider_server.server_port}{COLOR_RESET}")
+            print(f"For Visiting the app in devices with same network ---> {COLOR_GREEN}http://{ip}:{guider_server.server_port}{COLOR_RESET}")
             print("\t OR")
+            print(f"Devices outside the network use ngrok url ---->  {COLOR_GREEN}{ngrok_url}{COLOR_RESET}")
+            logging.info("")
+            print(f"{COLOR_YELLOW}If you are loading  Loading the website if there is a blue button called  {COLOR_CYAN}Visit Site{COLOR_YELLOW}, Click On that!!{COLOR_RESET}")
 
         else:
             logging.error("Ngrok access token not found. Starting a local server with a self-signed certificate.")
@@ -104,13 +111,11 @@ def run_servers():
             
             server.socket = context.wrap_socket(server.socket, server_side=True)
             
-            ngrok_url = f"https://{get_private_ipv4()}:{server.server_port}"
+            ngrok_url = f"https://{ip}:{server.server_port}"
+            print(f"For Visiting the app in devices with same network ---->  {COLOR_GREEN}{ngrok_url}{COLOR_RESET}")
 
             # Start the local server
-        print(f"Visit App at ---->  {COLOR_GREEN}{ngrok_url}{COLOR_RESET}")
         logging.info("")
-        
-        print(f"{COLOR_YELLOW}After Loading the website if there is a blue button called  {COLOR_CYAN}Visit Site{COLOR_YELLOW}, Click On that!!{COLOR_RESET}")
         print(f"{COLOR_RED}Press Ctrl + C to exit...{COLOR_RESET}")
         server.serve_forever()
 
@@ -132,6 +137,4 @@ def run_servers():
 
 if __name__ == "__main__":
     setup_colorized_logging()
-    # Register a signal handler for Ctrl+C
-    # signal.signal(signal.SIGINT, lambda signum, frame: sys.exit(0))
     run_servers()

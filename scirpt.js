@@ -31,7 +31,9 @@ function errorDisplay(err) {
 
 // Check if camera is supported
 function hasGetUserMedia() {
-  return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  return (
+    "mediaDevices" in navigator && "getUserMedia" in navigator.mediaDevices
+  );
 }
 
 // Function to stop the current stream
@@ -84,7 +86,9 @@ async function load() {
     const response = await fetch("config.yml");
 
     if (response.status == 404) {
+      alert("Cannot find config.yml file on project directory.");
       throw new Error("Config.yml file not found");
+      return;
     }
 
     const yamlData = await response.text();
@@ -103,6 +107,7 @@ async function load() {
   } catch (error) {
     errorDisplay("Error loading config.yml file: " + error.message);
     isOk = false;
+    return;
   }
 
   if (isOk) {
@@ -116,6 +121,7 @@ async function load() {
     } catch (error) {
       errorDisplay("Error loading AI model files: " + error.message);
       isOk = false;
+      return;
     }
   }
 
@@ -265,6 +271,7 @@ INPUT_SELECT.addEventListener("change", (e) => {
       });
     DATA = VIDEO;
   } else if (e.target.value == "file") {
+    stopStream();
     FILE_CONTAINER.style = "display:block;";
     CAMERA.style = "display:none;";
     CAMERA_CONTROL.style = "display:none;";

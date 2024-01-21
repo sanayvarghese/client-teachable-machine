@@ -1,21 +1,30 @@
 # Teachable Machine Client App 💻
 
-A simple client app with local server hosting for AI made with <a href="https://teachablemachine.withgoogle.com/" style="color:lightblue">Teachable Machine</a>. Using this repo you can start a local server in your desktop and access across devices in your same network.
+This simple client app offers local server hosting for AI models created with <a href="https://teachablemachine.withgoogle.com/" style="color:lightblue">Teachable Machine</a>. It allows you to launch a local server on your desktop and seamlessly access it from other devices within your network.
 
 <img src="./assets/cover.png" width="100%" />
 
 - Features
+
   - Image upload
   - Camera (both front and rear)
   - Camera controls (play and pause)
   - Custom Theme
   - Ngrok Supported
+    <br/>
+
+- Requirements
+  - Python 3
+  - Python packages:
+    - ngrok
+    - pyyaml
+  - Internet Access
 
 Follow the steps below to setup a frontend for your AI model trained with Teachable machine.
 
 ---
 
-<details>
+<details open>
 <summary>How to build a AI model with <a href="https://teachablemachine.withgoogle.com/" style="color:lightblue">Teachable Machine</a></summary>
 <br/>
 
@@ -25,7 +34,7 @@ Go to <a href="https://teachablemachine.withgoogle.com/train/image">https://teac
 
 #### Step 2
 
-Name the different classes for your model
+Name the different classes for your model (eg: with mask, without mask, mask weared incorrectly)
 
 #### Step 3
 
@@ -48,7 +57,7 @@ Upload or Download your Model
 
 ---
 
-## Step 1
+## Step 1 (Downloading Repository)
 
 <details open>
 <summary>
@@ -57,9 +66,10 @@ Manually Download the zip
 
 - Download the zip and Extract the files
   <img src="./assets/github.png" width="100%" />
-- Open the folder and click on the address bar and type cmd.exe
-<img src="./assets/explorer.png" width="100%" />
-This will open cmd on the project folder
+- Open the folder and click on the address bar and type `cmd.exe` and <kbd>Press Enter</kbd>
+  <img src="./assets/explorer.png" width="100%" />
+  This will open cmd on the project folder
+
 </details>
 
 <details>
@@ -81,7 +91,16 @@ Using Git
 
 </details>
 
-## Step 2
+## Step 2 (Installing Requirements)
+
+Now you want to install the requirements for the project to run using python
+In cmd.exe, Paste
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+## Step 3 (Configuring Project)
 
 Now open the browser and get your Teachable machine trained AI model link or download the model and edit the [`config.yml`](./config.yml) file
 
@@ -99,15 +118,27 @@ Now open the browser and get your Teachable machine trained AI model link or dow
   <img src="./assets/copy.png" width="100%" />
   <br/>
 
-- #### Paste the link in config.yml file for the field `TEACHABLE_MACHINE_URL`
+- #### Paste the link in config.yml file for the field `TEACHABLE_MACHINE_URL`.
+
   Eg: [`config.yml`](./config.yml)
 
-```yaml
-TEACHABLE_MACHINE_URL: https://teachablemachine.withgoogle.com/models/XXXXXX/
-```
+  From
 
-Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
-<br/>
+  ```yaml
+  TEACHABLE_MACHINE_URL: ./libraries/
+  ```
+
+  To
+
+  ```yaml
+  TEACHABLE_MACHINE_URL: https://teachablemachine.withgoogle.com/models/XXXXXX/
+  ```
+
+  > [!WARNING]
+  > Make sure you leave a space between colon( : )
+
+  Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
+  <br/>
 
 </details>
 
@@ -136,9 +167,12 @@ Replace `https://teachablemachine.withgoogle.com/models/XXXXXX/` with your link
   TEACHABLE_MACHINE_URL: ./libraries/
   ```
 
+  > [!WARNING]
+  > Make sure you leave a space between colon( : )
+
 </details>
 
-## Step 3
+## Step 3 (Running the app)
 
 > [!TIP]
 > If you want to start a secure server and access your server from any device consider using Ngrok
@@ -171,6 +205,8 @@ Now our app is perfectly working! 🥳🎉
 
 > [!TIP]
 > You can change the facing mode of camera in [config.yml](./config.yml) (We have also provided a detailed walkthrough in [FAQ](#camera-view-change))
+
+#### If you have any questions or face any issue, feel free to message me on [Twitter(@sanayvarghese)](https://twitter.com/sanayvarghese) or on [Instagram(@sanay\_.wh00)](https://www.instagram.com/sanay_.wh00/)(Fast reply) or Open an issue on this repository. Thankyou 🤩
 
 # FAQ
 
@@ -254,4 +290,11 @@ Restart the server to apply the changes
 
 </details>
 
-##### If you have any other questions or face any other issue, feel free to open a issue :)
+<details>
+<summary>Q3. Facing Error: yaml.parser.ParserError</summary>
+
+Open [`config.yml`](./config.yml) and Make Sure you have leaved a space after colon( : )
+
+If the error still persist, Feel free to contact me or open a issue in github.
+
+</details>

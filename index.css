@@ -171,6 +171,10 @@ img:-moz-broken {
 #switch {
   border-color: var(--text-color);
   text-shadow: 0 0 3px var(--botton-border);
+  filter: drop-shadow(-1px -1px 0px var(--text-color))
+    drop-shadow(2px -1px 0px var(--text-color))
+    drop-shadow(2px 2px 0px var(--text-color))
+    drop-shadow(-1px 2px 0px var(--text-color));
   color: var(--button-color);
   text-align: center;
   font-size: 40px;
@@ -179,7 +183,10 @@ img:-moz-broken {
 }
 #stop {
   border-color: var(--text-color);
-  text-shadow: 0 0 3px var(--botton-border);
+  filter: drop-shadow(-1px -1px 0px var(--text-color))
+    drop-shadow(2px -1px 0px var(--text-color))
+    drop-shadow(2px 2px 0px var(--text-color))
+    drop-shadow(-1px 2px 0px var(--text-color));
   color: var(--button-color);
   text-align: center;
   /* font-size: 50px; */

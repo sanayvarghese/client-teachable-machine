@@ -1,6 +1,21 @@
-# NGROK_AUTH_TOKEN: 2HaR4n5oF4h6cNIqMQAUnhkwm3t_XXXXXXXXXX
-TEACHABLE_MACHINE_URL: ./libraries/
+NGROK_AUTH_TOKEN: 2HaR4n5oF4h6cNIqMQAUnhkwm3t_2FrUErvyssZD9i5Cwkv6E
+
+# Your Teachable Machine Ai model Link
+TEACHABLE_MACHINE_URL: https://teachablemachine.withgoogle.com/models/A28n83xPs/
 
 # FACING MODE OF CAMERA
 # Eg: front and back
 DEFAULT_CAMERA_FACING: "front"
+
+
+
+
+
+
+
+
+
+
+#################################################################
+############ Made by Sanay George Varghese ######################
+#################################################################
