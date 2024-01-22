@@ -1,7 +1,7 @@
-NGROK_AUTH_TOKEN: 2HaR4n5oF4h6cNIqMQAUnhkwm3t_2FrUErvyssZD9i5Cwkv6E
+#NGROK_AUTH_TOKEN: YOUR_AUTH_TOKEN
 
 # Your Teachable Machine Ai model Link
-TEACHABLE_MACHINE_URL: https://teachablemachine.withgoogle.com/models/A28n83xPs/
+TEACHABLE_MACHINE_URL: https://teachablemachine.withgoogle.com/models/XXXXXX/
 
 # FACING MODE OF CAMERA
 # Eg: front and back
